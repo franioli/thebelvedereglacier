@@ -31,7 +31,10 @@ window.cesiumViewer = new Cesium.Viewer("cesiumContainer", {
   selectionIndicator: false,
   timeline: false,
   navigationHelpButton: false,
-  imageryProvider: Cesium.createOpenStreetMapImageryProvider({url: "https://a.tile.openstreetmap.org/",}),
+  // imageryProvider: Cesium.createOpenStreetMapImageryProvider({url: "https://a.tile.openstreetmap.org/",}),
+  imageryProvider: new Cesium.UrlTemplateImageryProvider({
+  url: 'https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png',
+  credit: 'Stamen Terrain'}),
 });
 
 cesiumViewer.terrainProvider = new Cesium.CesiumTerrainProvider({
