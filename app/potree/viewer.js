@@ -1,20 +1,22 @@
 import * as THREE from "./libs/three.js/build/three.module.js";
 
 // Define constants for point cloud URLs
+const S3_BASE = "https://belvedere-website.nbg1.your-objectstorage.com/potree/pointclouds";
+
 const pointCloudURLs = [
-  { url: "./assets/pointclouds/1977/metadata.json", name: "1977",},
-  { url: "./assets/pointclouds/1991/metadata.json", name: "1991" },
-  { url: "./assets/pointclouds/2001/metadata.json", name: "2001" },
-  { url: "./assets/pointclouds/2009/metadata.json", name: "2009" },
-  { url: "./assets/pointclouds/2015/metadata.json", name: "2015" },
-  { url: "./assets/pointclouds/2016/metadata.json", name: "2016" },
-  { url: "./assets/pointclouds/2017/metadata.json", name: "2017" },
-  { url: "./assets/pointclouds/2018/metadata.json", name: "2018" },
-  { url: "./assets/pointclouds/2019/metadata.json", name: "2019" },
-  { url: "./assets/pointclouds/2020/metadata.json", name: "2020" },
-  { url: "./assets/pointclouds/2021/metadata.json", name: "2021" },
-  { url: "./assets/pointclouds/2022/metadata.json", name: "2022" },
-  { url: "./assets/pointclouds/2023/metadata.json", name: "2023", visible: true },
+  { url: `${S3_BASE}/1977/metadata.json`, name: "1977" },
+  { url: `${S3_BASE}/1991/metadata.json`, name: "1991" },
+  { url: `${S3_BASE}/2001/metadata.json`, name: "2001" },
+  { url: `${S3_BASE}/2009/metadata.json`, name: "2009" },
+  { url: `${S3_BASE}/2015/metadata.json`, name: "2015" },
+  { url: `${S3_BASE}/2016/metadata.json`, name: "2016" },
+  { url: `${S3_BASE}/2017/metadata.json`, name: "2017" },
+  { url: `${S3_BASE}/2018/metadata.json`, name: "2018" },
+  { url: `${S3_BASE}/2019/metadata.json`, name: "2019" },
+  { url: `${S3_BASE}/2020/metadata.json`, name: "2020" },
+  { url: `${S3_BASE}/2021/metadata.json`, name: "2021" },
+  { url: `${S3_BASE}/2022/metadata.json`, name: "2022" },
+  { url: `${S3_BASE}/2023/metadata.json`, name: "2023", visible: true },
 ];
 
 window.cesiumViewer = new Cesium.Viewer("cesiumContainer", {
@@ -127,7 +129,8 @@ function loadPointCloud(url, name, visible = false) {
 }
 
 // Load basemap pointcloud
-loadPointCloud("./assets/pointclouds/background/metadata.json", "Background", true);
+loadPointCloud(`${S3_BASE}/background/metadata.json`, "Background", true);
+
 
 // Load all point cloud data
 pointCloudURLs.forEach(({ url, name, visible }) => {
