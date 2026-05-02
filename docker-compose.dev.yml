@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: thebelvedereglacier-webserver-dev:latest
     volumes:
       - ./app:/var/www/html # Mount the local directory to /var/www/html in the container
     environment:

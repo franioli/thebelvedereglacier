@@ -1,11 +1,11 @@
 services:
-  webserver: # Apache webserver service
+  webserver:
     container_name: belvedereapp
     build:
-      context: . # Dockerfile path
+      context: .
       dockerfile: Dockerfile
-    ports: # Map port on the host to port on the container 
-      - 80:80
+    expose:
+      - "80"              # internal only — Caddy handles public access
     environment:
       - DBHOST=${DBHOST}
       - DBNAME=${DBNAME}
@@ -13,3 +13,18 @@ services:
       - DBPORT=${DBPORT}
       - DBSSLMODE=${DBSSLMODE}
       - DBPASSWORD=${DBPASSWORD}
+    networks:
+      - public-net        # Caddy needs to reach it
+      - infra-net         # needs to reach postgres
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  public-net:
+    external: true
+  infra-net:
+    external: true
