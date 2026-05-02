@@ -1,0 +1,18 @@
+services:
+  webserver:
+    container_name: belvedereapp-local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: thebelvedereglacier-webserver-local:latest
+    ports:
+      - "8080:80"
+    env_file:
+      - .env
+    environment:
+      DBHOST: ${DBHOST}
+      DBNAME: ${DBNAME}
+      DBUSERNAME: ${DBUSERNAME}
+      DBPORT: ${DBPORT}
+      DBSSLMODE: ${DBSSLMODE}
+      DBPASSWORD: ${DBPASSWORD}

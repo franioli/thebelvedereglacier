@@ -1,0 +1,26 @@
+{
+    "CORSRules": [
+        {
+            "AllowedHeaders": [
+                "*"
+            ],
+            "AllowedMethods": [
+                "GET",
+                "HEAD"
+            ],
+            "AllowedOrigins": [
+                "https://dev.thebelvedereglacier.it",
+                "https://thebelvedereglacier.it",
+                "http://localhost:8080",
+                "http://127.0.0.1:8080"
+            ],
+            "ExposeHeaders": [
+                "ETag",
+                "Accept-Ranges",
+                "Content-Length",
+                "Content-Range"
+            ],
+            "MaxAgeSeconds": 3600
+        }
+    ]
+}
